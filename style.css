@@ -53,13 +53,12 @@ body {
 .nav-inner {
   max-width: 960px; margin: 0 auto;
   display: flex; align-items: center; height: 44px;
-  overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;
 }
-.nav-inner::-webkit-scrollbar { display: none; }
 .nav-inner a {
   color: rgba(255,255,255,0.7); text-decoration: none;
   font-family: 'Raleway', sans-serif; font-size: 0.72rem; font-weight: 600;
-  letter-spacing: 0.5px; white-space: nowrap; padding: 0 12px;
+  letter-spacing: 0.5px; white-space: nowrap;
+  flex: 1; justify-content: center;
   height: 100%; display: flex; align-items: center;
   border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s;
 }
@@ -71,9 +70,9 @@ body {
 .hero {
   position: relative;
   background: linear-gradient(135deg, #1A0A2E 0%, #2E1050 40%, #4A1060 70%, #2C0A3A 100%);
-  min-height: 280px;
+  min-height: 180px;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; padding: 44px 16px 36px; overflow: hidden;
+  text-align: center; padding: 28px 16px 24px; overflow: hidden;
 }
 .hero::before {
   content: ''; position: absolute; inset: 0;
@@ -89,7 +88,7 @@ body {
 }
 
 .castle-icon {
-  font-size: 3rem; margin-bottom: 8px; position: relative;
+  font-size: 2.2rem; margin-bottom: 6px; position: relative;
   filter: drop-shadow(0 0 16px rgba(201,168,76,0.5));
   animation: castleGlow 3s ease-in-out infinite alternate;
 }
@@ -104,7 +103,7 @@ body {
   padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; position: relative;
 }
 .hero-title {
-  font-family: 'Playfair Display', serif; font-size: 1.7rem;
+  font-family: 'Playfair Display', serif; font-size: 1.4rem;
   color: #fff; line-height: 1.2; position: relative;
   text-shadow: 0 2px 16px rgba(201,168,76,0.4);
 }
@@ -374,9 +373,9 @@ tr:hover td { background: rgba(201,168,76,0.04); }
 ══════════════════════════════════════════ */
 @media (min-width: 640px) {
   body { font-size: 15px; }
-  .hero { min-height: 360px; padding: 56px 20px 46px; }
-  .castle-icon { font-size: 4rem; }
-  .hero-title { font-size: 2.2rem; }
+  .hero { min-height: 260px; padding: 40px 20px 34px; }
+  .castle-icon { font-size: 3rem; }
+  .hero-title { font-size: 1.9rem; }
   .hero-subtitle { font-size: 0.88rem; }
   .container { padding: 0 20px; }
   .section { padding: 44px 0 28px; }
@@ -397,9 +396,9 @@ tr:hover td { background: rgba(201,168,76,0.04); }
 ══════════════════════════════════════════ */
 @media (min-width: 960px) {
   body { font-size: 16px; }
-  .hero { min-height: 440px; padding: 72px 24px 56px; }
-  .castle-icon { font-size: 5rem; }
-  .hero-title { font-size: 3rem; }
+  .hero { min-height: 320px; padding: 52px 24px 42px; }
+  .castle-icon { font-size: 3.6rem; }
+  .hero-title { font-size: 2.4rem; }
   .hero-badge { font-size: 0.68rem; letter-spacing: 3px; }
   .hero-subtitle { font-size: 1rem; letter-spacing: 2px; }
   .hero-divider { width: 80px; }
