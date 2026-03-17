@@ -58,7 +58,7 @@ body {
 .site-nav::-webkit-scrollbar { display: none; }
 .nav-inner {
   max-width: 960px; margin: 0 auto;
-  display: flex; align-items: center; height: 48px;
+  display: flex; align-items: center; justify-content: center; height: 48px;
   min-width: max-content; padding: 0 12px;
 }
 .nav-inner a {
@@ -78,9 +78,9 @@ body {
 .hero {
   position: relative;
   background: linear-gradient(135deg, #1A0A2E 0%, #2E1050 40%, #4A1060 70%, #2C0A3A 100%);
-  min-height: 180px;
+  min-height: auto;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; padding: 28px 16px 24px; overflow: hidden;
+  text-align: center; padding: 18px 16px 16px; overflow: hidden;
 }
 .hero::before {
   content: ''; position: absolute; inset: 0;
@@ -96,7 +96,7 @@ body {
 }
 
 .castle-icon {
-  font-size: 2.2rem; margin-bottom: 6px; position: relative;
+  font-size: 1.8rem; margin-bottom: 4px; position: relative;
   filter: drop-shadow(0 0 16px rgba(201,168,76,0.5));
   animation: castleGlow 3s ease-in-out infinite alternate;
 }
@@ -108,10 +108,10 @@ body {
   background: linear-gradient(135deg, var(--gold), var(--gold-light));
   color: var(--deep); font-family: 'Raleway', sans-serif; font-weight: 700;
   font-size: 0.58rem; letter-spacing: 2px; text-transform: uppercase;
-  padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; position: relative;
+  padding: 3px 10px; border-radius: 20px; margin-bottom: 8px; position: relative;
 }
 .hero-title {
-  font-family: 'Playfair Display', serif; font-size: 1.4rem;
+  font-family: 'Playfair Display', serif; font-size: 1.25rem;
   color: #fff; line-height: 1.2; position: relative;
   text-shadow: 0 2px 16px rgba(201,168,76,0.4);
 }
@@ -119,12 +119,12 @@ body {
 .hero-subtitle {
   font-family: 'Raleway', sans-serif; font-weight: 300;
   color: rgba(255,255,255,0.7); font-size: 0.75rem;
-  letter-spacing: 1.5px; margin-top: 8px; position: relative;
+  letter-spacing: 1.5px; margin-top: 6px; position: relative;
 }
 .hero-divider {
   width: 50px; height: 2px;
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  margin: 14px auto 0; position: relative;
+  margin: 10px auto 0; position: relative;
 }
 
 /* ══ ALERT BANNER ══ */
@@ -430,10 +430,10 @@ tr:hover td { background: rgba(201,168,76,0.04); }
 ══════════════════════════════════════════ */
 @media (min-width: 640px) {
   body { font-size: 15px; }
-  .hero { min-height: 260px; padding: 40px 20px 34px; }
-  .castle-icon { font-size: 3rem; }
-  .hero-title { font-size: 1.9rem; }
-  .hero-subtitle { font-size: 0.88rem; }
+  .hero { min-height: auto; padding: 28px 20px 22px; }
+  .castle-icon { font-size: 2.4rem; }
+  .hero-title { font-size: 1.7rem; }
+  .hero-subtitle { font-size: 0.85rem; }
   .container { padding: 0 20px; }
   .section { padding: 44px 0 28px; }
   .section-icon { width: 46px; height: 46px; font-size: 1.3rem; }
@@ -453,9 +453,9 @@ tr:hover td { background: rgba(201,168,76,0.04); }
 ══════════════════════════════════════════ */
 @media (min-width: 960px) {
   body { font-size: 16px; }
-  .hero { min-height: 320px; padding: 52px 24px 42px; }
-  .castle-icon { font-size: 3.6rem; }
-  .hero-title { font-size: 2.4rem; }
+  .hero { min-height: auto; padding: 36px 24px 28px; }
+  .castle-icon { font-size: 2.8rem; }
+  .hero-title { font-size: 2rem; }
   .hero-badge { font-size: 0.68rem; letter-spacing: 3px; }
   .hero-subtitle { font-size: 1rem; letter-spacing: 2px; }
   .hero-divider { width: 80px; }
