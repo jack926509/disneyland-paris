@@ -68,11 +68,6 @@ disneyland-paris-2026/
 - 享有 **Extra Magic Time 提早 1 小時入園**特權
 - 部分合作夥伴飯店享免費接駁但不含提早入園
 
-#### 自駕
-
-- 從巴黎市中心經 A4 高速公路約 **45 分鐘**，指標清楚
-- 度假區停車場充足，適合攜帶大型行李或全家出遊
-
 > ⚠️ **行李寄放**：樂園入口右側 Guest Storage，服飾 €5 / 小行李 €11 / 大行李 €15，開放至閉園後 45 分鐘。
 
 ---
@@ -246,7 +241,7 @@ Disneyland Paris 官方 App 功能：
 - 新增 Regal View Restaurant & Lounge、Adventure Way 介紹
 - 更新 DPA Ultimate 價格區間（€90–€190）
 - 修正 Phantom Manor 背景設定（美國西部鬼城，非中世紀巴黎）
-- 新增常客心得與 Insider Tips
+- 新增實用提醒與 Insider Tips
 - 新增頁面導覽列、favicon、無障礙改善
 - 修正 CSS 色彩對比度（WCAG AA 合規）
 - 新增平板斷點（768px）與極小螢幕斷點（400px）
