@@ -17,7 +17,9 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 52px; }
+html { scroll-behavior: smooth; scroll-padding-top: 56px; }
+a, button { -webkit-tap-highlight-color: rgba(201,168,76,0.2); }
+input, button, a { touch-action: manipulation; }
 
 body {
   font-family: 'Noto Serif TC', serif;
@@ -48,23 +50,29 @@ body {
   background: rgba(26,10,46,0.95);
   backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(201,168,76,0.3);
-  padding: 0 12px;
+  padding: 0;
+  overflow-x: auto; overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
+.site-nav::-webkit-scrollbar { display: none; }
 .nav-inner {
   max-width: 960px; margin: 0 auto;
-  display: flex; align-items: center; height: 44px;
+  display: flex; align-items: center; height: 48px;
+  min-width: max-content; padding: 0 12px;
 }
 .nav-inner a {
   color: rgba(255,255,255,0.7); text-decoration: none;
-  font-family: 'Raleway', sans-serif; font-size: 0.72rem; font-weight: 600;
+  font-family: 'Raleway', sans-serif; font-size: 0.75rem; font-weight: 600;
   letter-spacing: 0.5px; white-space: nowrap;
-  flex: 1; justify-content: center;
-  height: 100%; display: flex; align-items: center;
+  padding: 0 14px; min-height: 48px;
+  display: flex; align-items: center; justify-content: center;
   border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s;
 }
-.nav-inner a:hover, .nav-inner a:focus {
+.nav-inner a:hover, .nav-inner a:focus-visible {
   color: var(--gold-light); border-bottom-color: var(--gold);
 }
+.nav-inner a:active { color: var(--gold); }
 
 /* ══ HERO (Mobile) ══ */
 .hero {
@@ -122,9 +130,9 @@ body {
 /* ══ ALERT BANNER ══ */
 .alert-banner {
   background: linear-gradient(90deg, #3B0764, #6B21A8, #3B0764);
-  color: #fff; text-align: center; padding: 10px 14px;
-  font-family: 'Raleway', sans-serif; font-size: 0.74rem;
-  line-height: 1.6; border-bottom: 2px solid var(--gold);
+  color: #fff; text-align: center; padding: 12px 16px;
+  font-family: 'Raleway', sans-serif; font-size: 0.78rem;
+  line-height: 1.7; border-bottom: 2px solid var(--gold);
 }
 .alert-banner strong { color: var(--gold-light); }
 
@@ -299,15 +307,15 @@ tr:hover td { background: rgba(201,168,76,0.04); }
 }
 
 /* ══ TIPS (Mobile: 2col) ══ */
-.tips-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.tips-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
 .tip-item {
   background: linear-gradient(135deg, rgba(201,184,76,0.08), rgba(242,168,190,0.08));
   border: 1px solid rgba(201,168,76,0.2); border-radius: 10px;
-  padding: 12px 10px; text-align: center;
+  padding: 14px 12px; text-align: center;
 }
 .tip-item .tip-emoji { font-size: 1.4rem; margin-bottom: 4px; }
-.tip-item h4 { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 0.78rem; color: var(--deep); margin-bottom: 3px; }
-.tip-item p { font-size: 0.76rem; color: var(--text-muted); line-height: 1.6; }
+.tip-item h4 { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 0.78rem; color: var(--deep); margin-bottom: 4px; }
+.tip-item p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
 
 /* ── 一日攻略清單 ── */
 .strategy-list {
@@ -317,7 +325,7 @@ tr:hover td { background: rgba(201,168,76,0.04); }
 .strategy-list li { padding: 3px 0; }
 .strategy-list li strong { color: var(--text-main); }
 
-/* ── 返回頂端按鈕 ── */
+/* ── 返回頂端按鈕（手機浮動、桌面在 footer 內） ── */
 .back-to-top {
   display: inline-block;
   background: rgba(201,168,76,0.15);
@@ -328,9 +336,27 @@ tr:hover td { background: rgba(201,168,76,0.04); }
   font-size: 0.72rem; font-weight: 700; letter-spacing: 1px;
   text-decoration: none; margin-bottom: 14px;
   border: 1px solid rgba(201,168,76,0.3);
-  transition: background 0.2s;
+  transition: background 0.2s, opacity 0.3s;
 }
 .back-to-top:hover { background: rgba(201,168,76,0.3); }
+
+.back-to-top-float {
+  position: fixed; bottom: 20px; right: 16px; z-index: 800;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--deep); color: var(--gold-light);
+  border: 1.5px solid var(--gold);
+  font-size: 1.1rem; line-height: 44px; text-align: center;
+  text-decoration: none; box-shadow: 0 2px 12px rgba(26,10,46,0.3);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s, transform 0.2s;
+  display: none;
+}
+.back-to-top-float.visible { opacity: 1; pointer-events: auto; }
+.back-to-top-float:active { transform: scale(0.92); }
+@media (max-width: 639px) {
+  .back-to-top-float { display: block; }
+  .footer .back-to-top { display: none; }
+}
 
 /* ── 票種表格手機版（≤ 480px）改為卡片堆疊 ── */
 @media (max-width: 480px) {
@@ -387,8 +413,8 @@ tr:hover td { background: rgba(201,168,76,0.04); }
   .shop-list  { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .dpa-row { flex-direction: row; align-items: center; gap: 14px; }
   .dpa-label { min-width: 200px; }
-  .nav-inner { height: 48px; }
-  .nav-inner a { font-size: 0.74rem; padding: 0 14px; }
+  .nav-inner { height: 48px; min-width: unset; }
+  .nav-inner a { font-size: 0.78rem; padding: 0 16px; flex: 1; }
 }
 
 /* ══════════════════════════════════════════
@@ -417,12 +443,15 @@ tr:hover td { background: rgba(201,168,76,0.04); }
   .tip-item  { padding: 20px; }
   .tip-box, .insider-box { padding: 18px 22px; }
   .dpa-box { padding: 28px; }
-  .nav-inner a { font-size: 0.76rem; }
+  .nav-inner a { font-size: 0.8rem; padding: 0 20px; }
 }
 
 /* ≤ 360px — 極小螢幕 */
 @media (max-width: 360px) {
-  .hero-title { font-size: 1.4rem; }
+  .hero-title { font-size: 1.3rem; }
+  .hero-subtitle { font-size: 0.7rem; letter-spacing: 1px; }
   .tips-grid { grid-template-columns: 1fr; }
-  .nav-inner a { padding: 0 8px; font-size: 0.66rem; }
+  .nav-inner a { padding: 0 10px; font-size: 0.7rem; }
+  .alert-banner { font-size: 0.72rem; padding: 10px 12px; }
+  .section-title { font-size: 1.1rem; }
 }
