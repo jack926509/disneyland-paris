@@ -1,0 +1,623 @@
+/* ══════════════════════════════════════════
+   巴黎迪士尼 2026 攻略 — Stylesheet
+   Author: Claude / Anthropic
+   Last updated: 2026-03
+══════════════════════════════════════════ */
+
+/* ── CSS Variables ── */
+:root {
+  --gold:       #C9A84C;
+  --gold-light: #E8D08A;
+  --deep:       #1A0A2E;
+  --rose:       #C96C8A;
+  --rose-light: #F2A8BE;
+  --sky:        #7BB8D4;
+  --cream:      #FAF5EC;
+  --dark-card:  #221035;
+  --text-main:  #2D1B40;
+  --text-muted: #7A6590;
+}
+
+/* ── Reset ── */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Serif TC', serif;
+  background: var(--cream);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+/* ══════════════════════════════════════════
+   HERO
+══════════════════════════════════════════ */
+.hero {
+  position: relative;
+  background: linear-gradient(135deg, #1A0A2E 0%, #2E1050 40%, #4A1060 70%, #2C0A3A 100%);
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px 60px;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='1' fill='%23C9A84C' opacity='0.3'/%3E%3Ccircle cx='5' cy='5' r='0.5' fill='%23F2A8BE' opacity='0.4'/%3E%3Ccircle cx='55' cy='15' r='0.7' fill='%237BB8D4' opacity='0.3'/%3E%3C/svg%3E") repeat;
+  animation: starFloat 20s linear infinite;
+}
+
+@keyframes starFloat {
+  from { background-position: 0 0; }
+  to   { background-position: 60px 60px; }
+}
+
+.castle-icon {
+  font-size: 5rem;
+  margin-bottom: 16px;
+  position: relative;
+  filter: drop-shadow(0 0 20px rgba(201,168,76,0.5));
+  animation: castleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes castleGlow {
+  from { filter: drop-shadow(0 0 15px rgba(201,168,76,0.3)); }
+  to   { filter: drop-shadow(0 0 30px rgba(242,168,190,0.6)); }
+}
+
+.hero-badge {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: var(--deep);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 6px 20px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  color: #fff;
+  line-height: 1.15;
+  position: relative;
+  text-shadow: 0 2px 30px rgba(201,168,76,0.4);
+}
+
+.hero-title em {
+  color: var(--gold-light);
+  font-style: italic;
+}
+
+.hero-subtitle {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  color: rgba(255,255,255,0.7);
+  font-size: 1rem;
+  letter-spacing: 2px;
+  margin-top: 14px;
+  position: relative;
+}
+
+.hero-divider {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 24px auto 0;
+  position: relative;
+}
+
+/* ══════════════════════════════════════════
+   ALERT BANNER
+══════════════════════════════════════════ */
+.alert-banner {
+  background: linear-gradient(90deg, #3B0764, #6B21A8, #3B0764);
+  color: #fff;
+  text-align: center;
+  padding: 16px 24px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.9rem;
+  border-bottom: 2px solid var(--gold);
+}
+
+.alert-banner strong { color: var(--gold-light); }
+
+/* ══════════════════════════════════════════
+   LAYOUT
+══════════════════════════════════════════ */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section {
+  padding: 60px 0 40px;
+}
+
+/* ── Section Header ── */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.section-icon {
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, var(--rose), var(--deep));
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(201,108,138,0.3);
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem;
+  color: var(--text-main);
+}
+
+.section-title span {
+  display: block;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--rose);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+/* ── Fancy Divider ── */
+.fancy-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 8px 0 40px;
+}
+
+.fancy-divider::before,
+.fancy-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent);
+}
+
+.fancy-divider span { color: var(--gold); font-size: 1rem; }
+
+/* ══════════════════════════════════════════
+   TRANSPORT CARDS
+══════════════════════════════════════════ */
+.transport-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.transport-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px;
+  border: 1px solid rgba(201,168,76,0.2);
+  box-shadow: 0 4px 20px rgba(26,10,46,0.06);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.transport-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(26,10,46,0.12);
+}
+
+.transport-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--rose), var(--gold));
+}
+
+.transport-card .card-icon { font-size: 2rem; margin-bottom: 12px; }
+
+.transport-card h3 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--deep);
+  margin-bottom: 12px;
+}
+
+.transport-card p,
+.transport-card li {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.transport-card ul { padding-left: 16px; }
+
+.highlight-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: var(--deep);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+/* ══════════════════════════════════════════
+   TICKET TABLE
+══════════════════════════════════════════ */
+.ticket-wrapper {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(26,10,46,0.08);
+  border: 1px solid rgba(201,168,76,0.2);
+}
+
+.ticket-header {
+  background: linear-gradient(135deg, var(--deep), #2E1050);
+  color: #fff;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ticket-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background: rgba(26,10,46,0.05);
+  padding: 14px 20px;
+  text-align: left;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+td {
+  padding: 14px 20px;
+  font-size: 0.88rem;
+  color: var(--text-main);
+  border-top: 1px solid rgba(26,10,46,0.06);
+}
+
+tr:hover td { background: rgba(201,168,76,0.04); }
+
+.price-tag {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  color: var(--rose);
+  font-size: 0.95rem;
+}
+
+/* ── Tip Box ── */
+.tip-box {
+  background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(201,168,76,0.05));
+  border-left: 4px solid var(--gold);
+  border-radius: 0 12px 12px 0;
+  padding: 18px 22px;
+  margin-top: 20px;
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: var(--text-main);
+}
+
+.tip-box strong { color: #8a6a00; }
+
+/* ── DPA Box ── */
+.dpa-box {
+  background: linear-gradient(135deg, #2E1050, #1A0A2E);
+  border-radius: 16px;
+  padding: 28px;
+  color: #fff;
+  margin-top: 20px;
+}
+
+.dpa-box h4 {
+  font-family: 'Playfair Display', serif;
+  color: var(--gold-light);
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+
+.dpa-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  font-size: 0.87rem;
+}
+
+.dpa-row:last-child { border-bottom: none; }
+
+.dpa-label { flex: 1; opacity: 0.8; }
+
+.dpa-price {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  color: var(--gold-light);
+  font-size: 1rem;
+}
+
+.dpa-note {
+  font-size: 0.82rem;
+  opacity: 0.7;
+  margin-top: 16px;
+  line-height: 1.8;
+}
+
+/* ══════════════════════════════════════════
+   ATTRACTIONS
+══════════════════════════════════════════ */
+.attractions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.park-block {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(26,10,46,0.07);
+}
+
+.park-block-header {
+  padding: 20px 24px;
+  color: #fff;
+}
+
+.park-block-header.park-a {
+  background: linear-gradient(135deg, #8B1A6B, #C96C8A);
+}
+
+.park-block-header.park-b {
+  background: linear-gradient(135deg, #1A3A8B, #3B7DD8);
+}
+
+.park-block-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+}
+
+.park-block-header p {
+  font-size: 0.78rem;
+  opacity: 0.8;
+  margin-top: 4px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.attraction-list {
+  padding: 16px 24px 24px;
+  list-style: none;
+}
+
+.attraction-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(26,10,46,0.05);
+  font-size: 0.87rem;
+  line-height: 1.6;
+}
+
+.attraction-list li:last-child { border-bottom: none; }
+
+.att-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.att-name {
+  font-weight: 600;
+  color: var(--text-main);
+  display: block;
+}
+
+.att-desc {
+  color: var(--text-muted);
+  font-size: 0.81rem;
+}
+
+/* ── Badges ── */
+.badge-new {
+  display: inline-block;
+  background: var(--rose);
+  color: #fff;
+  font-size: 0.62rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 2px 7px;
+  border-radius: 6px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.badge-exclusive {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--deep);
+  font-size: 0.62rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 2px 7px;
+  border-radius: 6px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+/* ── Shows ── */
+.shows-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  margin: 40px 0 20px;
+  color: var(--text-main);
+}
+
+.show-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.show-card {
+  background: linear-gradient(135deg, var(--deep), #2E1050);
+  color: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.show-card:hover { transform: translateY(-3px); }
+
+.show-card::after {
+  content: '';
+  position: absolute;
+  bottom: -20px; right: -20px;
+  width: 80px; height: 80px;
+  background: rgba(201,168,76,0.1);
+  border-radius: 50%;
+}
+
+.show-card .show-emoji { font-size: 2rem; margin-bottom: 10px; }
+
+.show-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: var(--gold-light);
+}
+
+.show-card p { font-size: 0.84rem; opacity: 0.8; line-height: 1.7; }
+
+/* ══════════════════════════════════════════
+   SHOPPING
+══════════════════════════════════════════ */
+.shop-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.shop-item {
+  background: #fff;
+  border-radius: 14px;
+  padding: 22px;
+  border: 1px solid rgba(201,168,76,0.15);
+  box-shadow: 0 2px 12px rgba(26,10,46,0.05);
+  transition: transform 0.2s;
+}
+
+.shop-item:hover { transform: translateY(-2px); }
+
+.shop-item .shop-emoji { font-size: 1.8rem; margin-bottom: 10px; }
+
+.shop-item h4 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--deep);
+  margin-bottom: 6px;
+}
+
+.shop-item p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.7; }
+
+.shop-location {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.72rem;
+  color: var(--rose);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+/* ══════════════════════════════════════════
+   TIPS
+══════════════════════════════════════════ */
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.tip-item {
+  background: linear-gradient(135deg, rgba(201,184,76,0.08), rgba(242,168,190,0.08));
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+}
+
+.tip-item .tip-emoji { font-size: 2rem; margin-bottom: 10px; }
+
+.tip-item h4 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--deep);
+  margin-bottom: 6px;
+}
+
+.tip-item p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; }
+
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+.footer {
+  background: var(--deep);
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.8rem;
+  font-family: 'Raleway', sans-serif;
+}
+
+.footer strong { color: var(--gold-light); }
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .attractions-grid { grid-template-columns: 1fr; }
+  .hero-title { font-size: 2rem; }
+}
