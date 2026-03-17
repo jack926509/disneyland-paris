@@ -15,7 +15,8 @@
   --cream:      #FAF5EC;
   --dark-card:  #221035;
   --text-main:  #2D1B40;
-  --text-muted: #7A6590;
+  --text-muted: #5A4370; /* ← 加深以符合 WCAG AA 4.5:1 對比度 */
+  --nav-height: 52px;
 }
 
 /* ── Reset ── */
@@ -26,6 +27,86 @@ body {
   background: var(--cream);
   color: var(--text-main);
   overflow-x: hidden;
+}
+
+/* ── Skip Navigation（無障礙） ── */
+.skip-nav {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1000;
+  background: var(--deep);
+  color: var(--gold-light);
+  padding: 12px 24px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 0 0 8px 0;
+}
+.skip-nav:focus {
+  left: 0;
+}
+
+/* ── Screen Reader Only ── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ══════════════════════════════════════════
+   STICKY NAV
+══════════════════════════════════════════ */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  background: rgba(26, 10, 46, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(201,168,76,0.3);
+  padding: 0 20px;
+}
+
+.nav-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: var(--nav-height);
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+
+.nav-inner a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  padding: 0 14px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.nav-inner a:hover,
+.nav-inner a:focus {
+  color: var(--gold-light);
+  border-bottom-color: var(--gold);
 }
 
 /* ══════════════════════════════════════════
@@ -55,6 +136,15 @@ body {
 @keyframes starFloat {
   from { background-position: 0 0; }
   to   { background-position: 60px 60px; }
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .hero::before { animation: none; }
+  .castle-icon  { animation: none; }
+  .transport-card,
+  .show-card,
+  .shop-item { transition: none; }
 }
 
 .castle-icon {
@@ -289,9 +379,15 @@ body {
   font-size: 1.2rem;
 }
 
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 540px;
 }
 
 th {
@@ -336,6 +432,20 @@ tr:hover td { background: rgba(201,168,76,0.04); }
 
 .tip-box strong { color: #8a6a00; }
 
+/* ── Insider Tip Box (常客專屬) ── */
+.insider-box {
+  background: linear-gradient(135deg, rgba(123,184,212,0.12), rgba(201,108,138,0.08));
+  border-left: 4px solid var(--sky);
+  border-radius: 0 12px 12px 0;
+  padding: 18px 22px;
+  margin-top: 20px;
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: var(--text-main);
+}
+
+.insider-box strong { color: #2a6f8e; }
+
 /* ── DPA Box ── */
 .dpa-box {
   background: linear-gradient(135deg, #2E1050, #1A0A2E);
@@ -359,11 +469,12 @@ tr:hover td { background: rgba(201,168,76,0.04); }
   padding: 12px 0;
   border-bottom: 1px solid rgba(255,255,255,0.08);
   font-size: 0.87rem;
+  flex-wrap: wrap;
 }
 
-.dpa-row:last-child { border-bottom: none; }
+.dpa-row:last-of-type { border-bottom: none; }
 
-.dpa-label { flex: 1; opacity: 0.8; }
+.dpa-label { flex: 1; min-width: 200px; opacity: 0.8; }
 
 .dpa-price {
   font-family: 'Raleway', sans-serif;
@@ -615,9 +726,43 @@ tr:hover td { background: rgba(201,168,76,0.04); }
 .footer strong { color: var(--gold-light); }
 
 /* ══════════════════════════════════════════
-   RESPONSIVE
+   RESPONSIVE — 平板 (≤ 768px)
+══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .attractions-grid {
+    grid-template-columns: 1fr;
+  }
+  .transport-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tips-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hero { min-height: 400px; padding: 60px 20px 50px; }
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — 手機 (≤ 640px)
 ══════════════════════════════════════════ */
 @media (max-width: 640px) {
   .attractions-grid { grid-template-columns: 1fr; }
+  .transport-grid  { grid-template-columns: 1fr; }
+  .tips-grid       { grid-template-columns: 1fr 1fr; }
+  .shop-list       { grid-template-columns: 1fr; }
   .hero-title { font-size: 2rem; }
+  .dpa-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .dpa-price { align-self: flex-end; }
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — 極小螢幕 (≤ 400px)
+══════════════════════════════════════════ */
+@media (max-width: 400px) {
+  .tips-grid { grid-template-columns: 1fr; }
+  .show-cards { grid-template-columns: 1fr; }
+  .nav-inner a { padding: 0 10px; font-size: 0.7rem; }
 }
