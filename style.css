@@ -17,7 +17,7 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 52px; }
 
 body {
   font-family: 'Noto Serif TC', serif;
@@ -233,7 +233,7 @@ tr:hover td { background: rgba(201,168,76,0.04); }
 .dpa-row:last-of-type { border-bottom: none; }
 .dpa-label { opacity: 0.8; }
 .dpa-price { font-family: 'Raleway', sans-serif; font-weight: 700; color: var(--gold-light); font-size: 0.92rem; align-self: flex-end; }
-.dpa-note { font-size: 0.75rem; opacity: 0.7; margin-top: 10px; line-height: 1.8; }
+.dpa-note { font-size: 0.78rem; opacity: 0.7; margin-top: 10px; line-height: 1.8; }
 
 /* ══ ATTRACTIONS (Mobile: 1col) ══ */
 .attractions-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
@@ -246,13 +246,13 @@ tr:hover td { background: rgba(201,168,76,0.04); }
 .attraction-list { padding: 10px 14px 16px; list-style: none; }
 .attraction-list li {
   display: flex; align-items: flex-start; gap: 8px;
-  padding: 8px 0; border-bottom: 1px solid rgba(26,10,46,0.05);
-  font-size: 0.8rem; line-height: 1.6;
+  padding: 11px 0; border-bottom: 1px solid rgba(26,10,46,0.05);
+  font-size: 0.8rem; line-height: 1.6; min-height: 44px;
 }
 .attraction-list li:last-child { border-bottom: none; }
 .att-icon { font-size: 0.95rem; flex-shrink: 0; margin-top: 1px; }
 .att-name { font-weight: 600; color: var(--text-main); display: block; font-size: 0.82rem; }
-.att-desc { color: var(--text-muted); font-size: 0.76rem; }
+.att-desc { color: var(--text-muted); font-size: 0.8rem; }
 
 /* Badges */
 .badge-new {
@@ -281,7 +281,7 @@ tr:hover td { background: rgba(201,168,76,0.04); }
 }
 .show-card .show-emoji { font-size: 1.4rem; margin-bottom: 6px; }
 .show-card h4 { font-family: 'Playfair Display', serif; font-size: 0.88rem; margin-bottom: 5px; color: var(--gold-light); }
-.show-card p { font-size: 0.76rem; opacity: 0.8; line-height: 1.65; }
+.show-card p { font-size: 0.8rem; opacity: 0.8; line-height: 1.65; }
 
 /* ══ SHOPPING (Mobile: 1col) ══ */
 .shop-list { display: grid; grid-template-columns: 1fr; gap: 10px; }
@@ -293,7 +293,7 @@ tr:hover td { background: rgba(201,168,76,0.04); }
 .shop-item:hover { transform: translateY(-1px); }
 .shop-item .shop-emoji { font-size: 1.4rem; margin-bottom: 5px; }
 .shop-item h4 { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--deep); margin-bottom: 3px; }
-.shop-item p { font-size: 0.76rem; color: var(--text-muted); line-height: 1.65; }
+.shop-item p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.65; }
 .shop-location {
   font-family: 'Raleway', sans-serif; font-size: 0.62rem; color: var(--rose);
   font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; margin-top: 5px;
@@ -307,8 +307,60 @@ tr:hover td { background: rgba(201,168,76,0.04); }
   padding: 12px 10px; text-align: center;
 }
 .tip-item .tip-emoji { font-size: 1.4rem; margin-bottom: 4px; }
-.tip-item h4 { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 0.76rem; color: var(--deep); margin-bottom: 3px; }
-.tip-item p { font-size: 0.72rem; color: var(--text-muted); line-height: 1.6; }
+.tip-item h4 { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 0.78rem; color: var(--deep); margin-bottom: 3px; }
+.tip-item p { font-size: 0.76rem; color: var(--text-muted); line-height: 1.6; }
+
+/* ── 一日攻略清單 ── */
+.strategy-list {
+  margin-top: 8px; padding-left: 20px;
+  font-size: 0.8rem; line-height: 1.9; color: var(--text-main);
+}
+.strategy-list li { padding: 3px 0; }
+.strategy-list li strong { color: var(--text-main); }
+
+/* ── 返回頂端按鈕 ── */
+.back-to-top {
+  display: inline-block;
+  background: rgba(201,168,76,0.15);
+  color: var(--gold-light);
+  padding: 7px 18px;
+  border-radius: 20px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 1px;
+  text-decoration: none; margin-bottom: 14px;
+  border: 1px solid rgba(201,168,76,0.3);
+  transition: background 0.2s;
+}
+.back-to-top:hover { background: rgba(201,168,76,0.3); }
+
+/* ── 票種表格手機版（≤ 480px）改為卡片堆疊 ── */
+@media (max-width: 480px) {
+  .table-scroll { overflow-x: visible; }
+  table, tbody, tr, td { display: block; }
+  thead { display: none; }
+  tr {
+    border-bottom: 2px solid rgba(201,168,76,0.18);
+    padding: 10px 0;
+  }
+  tr:last-child { border-bottom: none; }
+  td {
+    position: relative;
+    padding: 3px 12px 3px 42%;
+    border-top: none; font-size: 0.78rem;
+  }
+  td::before {
+    position: absolute; left: 12px; top: 4px;
+    font-family: 'Raleway', sans-serif; font-size: 0.58rem;
+    font-weight: 700; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.8px;
+    line-height: 1.4;
+  }
+  td:nth-child(1)::before { content: "票種"; }
+  td:nth-child(2)::before { content: "對象"; }
+  td:nth-child(3)::before { content: "特色"; }
+  td:nth-child(4)::before { content: "建議"; }
+  td:nth-child(1) { padding-top: 8px; font-size: 0.85rem; }
+}
 
 /* ══ FOOTER ══ */
 .footer {
